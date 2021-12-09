@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin/binding"
 	"net/http"
 	"webtest/db"
+	"webtest/middleware"
 	. "webtest/model"
 )
 
@@ -17,7 +18,7 @@ func InitRouter() *gin.Engine {
 
 	main := r.Group("/main")
 	{
-		main.GET("/:id", func(ctx *gin.Context) {
+		main.GET("/:id", middleware.Baned(), func(ctx *gin.Context) {
 			demo := Demo{}
 			if err := db.Mysql.Find(&demo, ctx.Param("id")).Error; err != nil {
 				panic(err)

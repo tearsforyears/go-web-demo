@@ -1,0 +1,3 @@
+port: 8080
+url:
+  root:root@tcp(localhost:3306)/springdemo?charset=utf8mb4&parseTime=True&loc=Local
